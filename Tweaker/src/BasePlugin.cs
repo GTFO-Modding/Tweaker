@@ -26,12 +26,10 @@ namespace Dex.Tweaker
             var serverInteractions = Config.Bind(new ConfigDefinition("Client Patch", "Official Server Interactions"), false, new ConfigDescription("This will disable analytics on game event reporting, most drop server interactions and steam from setting friend data"));
             if (serverInteractions.Value)
             {
-                Instance.PatchAll(typeof(AnalyticsManager_OnGameEvent));
                 Instance.PatchAll(typeof(DropServerGameSession_ReportLayerProgression));
                 Instance.PatchAll(typeof(DropServerGameSession_ReportSessionResult));
                 Instance.PatchAll(typeof(DropServerManager_GetBoosterImplantPlayerDataAsync));
                 Instance.PatchAll(typeof(DropServerManager_UpdateBoosterImplantPlayerDataAsync));
-                Instance.PatchAll(typeof(SNet_Core_STEAM_SetFriendsData));
             }
 
             var interfaceFluff = Config.Bind(new ConfigDefinition("Client Patch", "General UI changes"), false, new ConfigDescription("This will enable various ui changes such as the watermark and signature"));
