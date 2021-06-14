@@ -10,10 +10,10 @@ namespace Dex.Tweaker.Util
             ID = id;
             Instance = new Harmony(id);
         }
-        public void Patch(Type original, string method, Type patch, bool prefix = false, bool postfix = false)
+        public void Patch(Type original, string method, Type patch, bool prefix = false, bool postfix = false, Type[] arguments = null)
         {
-            var harmonyPrefix = prefix ? new HarmonyMethod(patch, "Prefix") : null;
-            var harmonyPostfix = postfix ? new HarmonyMethod(patch, "Postfix") : null;
+            var harmonyPrefix = prefix ? new HarmonyMethod(patch, "Prefix", arguments) : null;
+            var harmonyPostfix = postfix ? new HarmonyMethod(patch, "Postfix", arguments) : null;
             this.Instance.Patch(original.GetMethod(method), harmonyPrefix, harmonyPostfix);
         }
         public void Unpatch(Type original, string method, int type = 1)
