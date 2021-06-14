@@ -1,0 +1,364 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>1.6.0</Version>
+    <RootNamespace>Dex.Tweaker</RootNamespace>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <DebugType>none</DebugType>
+    <AllowedReferenceRelatedFileExtensions>*.json;*.pdb</AllowedReferenceRelatedFileExtensions>
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
+    <AssemblyName>Dex.Tweaker</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="lib\**" />
+    <EmbeddedResource Remove="lib\**" />
+    <None Remove="lib\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="lib\BepInEx\0Harmony.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\BepInEx\BepInEx.Core.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\BepInEx\BepInEx.IL2CPP.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\BepInEx\UnhollowerBaseLib.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\MTFO\MTFO.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\MTFO\Newtonsoft.Json.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Addons-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\AssetPrefabs-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Assets-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\CellSound-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\CommandSystem.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\DevConsoleCommands-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\DevConsoloe-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Dissonance-integrations-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\DissonanceVoip.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\DropServerSDK-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\ExcludeInBuild-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\FluffyUnderware.DevTools.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\GameData-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\GlobalFramework-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\GUIX-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppMono.Security.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2Cppmscorlib.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppSystem.Configuration.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppSystem.Core.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppSystem.Diagnostics.StackTrace.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppSystem.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppSystem.Globalization.Extensions.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppSystem.IO.Compression.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppSystem.Net.Http.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppSystem.Runtime.Serialization.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppSystem.Xml.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Il2CppSystem.Xml.Linq.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\LibTessDotNet.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\LogUtils.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Modules-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\PlayFab-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Plugins-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Prototype.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Prototypes_ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Resources-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\RootMotion-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Scenes-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Shards-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\SNet_ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\StandardAssets-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\SteamWorks_ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\ToolBuddy.Curvy.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\ToolBuddy.Curvy.Examples.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Unity.TextMeshPro.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.AccessibilityModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.AIModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.AndroidJNIModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.AnimationModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.ARModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.AssetBundleModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.AudioModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.ClothModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.ClusterInputModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.ClusterRendererModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.CoreModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.CrashReportingModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.DirectorModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.DSPGraphModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.GameCenterModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.GridModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.HotReloadModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.ImageConversionModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.IMGUIModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.InputLegacyModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.InputModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.JSONSerializeModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.LocalizationModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.ParticleSystemModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.PerformanceReportingModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.Physics2DModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.PhysicsModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.ProfilerModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.ScreenCaptureModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.SharedInternalsModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.SpriteMaskModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.SpriteShapeModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.StreamingModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.SubstanceModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.SubsystemsModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.TerrainModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.TerrainPhysicsModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.TextCoreModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.TextRenderingModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.TilemapModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.TLSModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UI.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UIElementsModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UIModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UmbraModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UNETModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UnityAnalyticsModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UnityConnectModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UnityTestProtocolModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UnityWebRequestAssetBundleModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UnityWebRequestAudioModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UnityWebRequestModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UnityWebRequestTextureModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.UnityWebRequestWWWModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.VehiclesModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.VFXModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.VideoModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.VRModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.WindModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityEngine.XRModule.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\UnityFileDebug-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Utils-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="lib\unhollowed\Wwise-ASM.dll">
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
