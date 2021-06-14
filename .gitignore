@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,vscode,dotenv
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,vscode,dotenv
 
+### User Defined Game Folder ###
+GameFolder.props
+
 ### Compile assemblies ###
 Tweaker/lib/
 

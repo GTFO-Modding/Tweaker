@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
-using MTFO.Managers;
 using Dex.Tweaker.Util;
+using Dex.Tweaker.PluginDependency;
 
 namespace Dex.Tweaker.DataTransfer
 {
@@ -13,7 +13,7 @@ namespace Dex.Tweaker.DataTransfer
         public virtual string GetFileName { get => $"{typeof(T).Name}.json"; }
         public ConfigBaseSingle()
         {
-            var jsonPath = Path.Combine(ConfigManager.CustomPath, "Tweaker", GetFileName);
+            var jsonPath = Path.Combine(MTFO.CustomPath, "Tweaker", GetFileName);
             if(File.Exists(jsonPath))
             {
                 Config = JsonConvert.DeserializeObject<T>(File.ReadAllText(jsonPath));

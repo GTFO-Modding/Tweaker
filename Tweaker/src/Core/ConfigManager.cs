@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using BepInEx.Configuration;
+using Dex.Tweaker.PluginDependency;
 using UnityEngine;
 
 namespace Dex.Tweaker.Core
@@ -9,7 +10,7 @@ namespace Dex.Tweaker.Core
     {
         public static void LoadJson()
         {
-            var customPath = Path.Combine(MTFO.Managers.ConfigManager.CustomPath, "Tweaker");
+            var customPath = Path.Combine(MTFO.CustomPath, "Tweaker");
             if(!Directory.Exists(customPath))
             {
                 Directory.CreateDirectory(customPath);

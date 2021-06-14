@@ -4,11 +4,13 @@ using BepInEx;
 using BepInEx.Configuration;
 using HarmonyLib;
 using UnityEngine;
+using Dex.Tweaker.PluginDependency;
 
 namespace Dex.Tweaker
 {
     [BepInPlugin("com.Dex.Tweaker", "Dex.Tweaker", "1.6.0")]
     [BepInProcess("GTFO.exe")]
+    [BepInDependency(MTFO.GUID, BepInDependency.DependencyFlags.HardDependency)]
     class BasePlugin : BepInEx.IL2CPP.BasePlugin
     {
         public override void Load()
