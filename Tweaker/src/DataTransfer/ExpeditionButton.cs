@@ -4,7 +4,7 @@ namespace Dex.Tweaker.DataTransfer
 {
     class ExpeditionButton
     {
-        public ExpeditionButton(string label, float x, float y, float z, float scale, string decrypt = null, bool heat = false, string status = null)
+        public ExpeditionButton(string label, float scale, float x, float y, float z, string decrypt = null, bool heat = false, string status = null)
         {
             Decrypt = decrypt;
             Label = label;
