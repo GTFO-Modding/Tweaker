@@ -8,6 +8,6 @@ namespace Dex.Tweaker.Patch
     class Dam_EnemyDamageLimb_ExplosionDamage
     {
         public static void Prefix(ref float dam, Dam_EnemyDamageLimb __instance)
-            => Log.Debug($"Explosion\n\tdamage: {dam}\n\ttarget: {__instance.m_base.name}");
+            => Log.Debug($"Explosion damage: {dam} target: {__instance.m_base.name}");
     }
 }
