@@ -12,12 +12,6 @@ namespace Dex.Tweaker.Patch
     {
         public static void Postfix(CM_PageRundown_New __instance)
         {
-            if (Global.RundownIdToLoad > 1)
-            {
-                GuiManager.MainMenuLayer.ChangePage(eCM_MenuPage.CMP_NONE);
-                Log.Error("THE RUNDOWN INFO SCREEN WAS SKIPPED, UNABLE TO CONTINUE WITH THE GAME. IF USING QUALITY OF LIFE SET SkipRundownInfo TO FALSE");
-            }
-
             //Disable matchmake buttons
             __instance.m_matchmakeAllButton.SetVisible(false);
             __instance.m_matchmakeAllButton.SetText("MATCHMAKE DISABLED");

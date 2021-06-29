@@ -13,6 +13,12 @@ namespace Dex.Tweaker
     {
         public override void Load()
         {
+            if (Globals.Global.RundownIdToLoad > 1)
+            {
+                base.Log.LogWarning("Edit the data blocks to load rundown id 1 for tweaker to work");
+                base.Unload();
+                return;
+            }
             Instance = new Harmony("com.Dex.Tweaker");
             Util.Log.Source = base.Log;
             Core.ConfigManager.UseDebugNavMesh = Config.Bind(new ConfigDefinition("Debug Nav Mesh", "Enable"), false, new ConfigDescription("Show where enemies can walk?"));
@@ -57,6 +63,9 @@ namespace Dex.Tweaker
             Instance.PatchAll(typeof(PlayerAgent_UpdateInfectionLocal));
             //Decouple this as too many patches rely on it
             Instance.PatchAll(typeof(WardenObjective_OnLocalPlayerStartExpedition));
+
+            //Test for terminal stuff
+            Instance.PatchAll(typeof(LG_ComputerTerminal_Setup));
         }
 
         public static Harmony Instance { get; set; }
