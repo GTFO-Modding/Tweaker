@@ -1,5 +1,5 @@
 ﻿using System;
-using Dex.Tweaker.Core;
+using Dex.Tweaker.Patch;
 
 namespace Dex.Tweaker.Config
 {
@@ -7,6 +7,13 @@ namespace Dex.Tweaker.Config
     {
         public override void OnConfigLoaded()
         {
+            foreach(var config in base.Config)
+            {
+                if (config.internalEnabled)
+                {
+                    BasePlugin.Instance.PatchAll(typeof(CM_PageLoadout_UpdatePageData));
+                }
+            }
         }
     }
 }

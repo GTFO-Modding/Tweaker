@@ -41,7 +41,6 @@ namespace Dex.Tweaker
             var interfaceFluff = Config.Bind(new ConfigDefinition("Client Patch", "General UI changes"), false, new ConfigDescription("This will enable various ui changes such as the watermark and signature"));
             if (interfaceFluff.Value)
             {
-                Instance.PatchAll(typeof(CM_PageLoadout_UpdatePageData));
                 Instance.PatchAll(typeof(CM_StartupScreen_SetText));
             }
 
