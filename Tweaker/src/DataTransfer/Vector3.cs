@@ -4,6 +4,7 @@ namespace Dex.Tweaker.DataTransfer
 {
     class Vector3
     {
+        public Vector3() { }
         public Vector3(float x, float y, float z)
         {
             X = x;

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace Dex.Tweaker.DataTransfer
 {
     class ExpeditionButton
     {
+        public ExpeditionButton() { }
         public ExpeditionButton(string label, float scale, float x, float y, float z, string decrypt = null, bool heat = false, string status = null)
         {
             Decrypt = decrypt;
@@ -19,5 +21,9 @@ namespace Dex.Tweaker.DataTransfer
         public string Status { get; set; }
         public float Scale { get; set; }
         public Vector3 Position { get; set; }
+
+        [JsonIgnore] private float x;
+        [JsonIgnore] private float y;
+        [JsonIgnore] private float z;
     }
 }
