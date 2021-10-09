@@ -12,7 +12,7 @@ namespace Dex.Tweaker.DataTransfer
         public virtual string GetFileName { get => $"{typeof(T).Name}.json"; }
         public ConfigBaseMultiple()
         {
-            var jsonPath = Path.Combine(DataBlock.CustomPath, "Tweaker", GetFileName);
+            var jsonPath = Path.Combine(MTFOInfo.CustomPath, "Tweaker", GetFileName);
             if (File.Exists(jsonPath))
             {
                 Config = JsonSerializer.Deserialize<T[]>(File.ReadAllText(jsonPath));

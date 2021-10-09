@@ -10,7 +10,7 @@ namespace Dex.Tweaker.Core
     {
         public static void LoadJson()
         {
-            var customPath = Path.Combine(DataBlock.CustomPath, "Tweaker");
+            var customPath = Path.Combine(MTFOInfo.CustomPath, "Tweaker");
             if(!Directory.Exists(customPath))
             {
                 Directory.CreateDirectory(customPath);

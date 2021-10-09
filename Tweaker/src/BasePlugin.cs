@@ -8,6 +8,7 @@ using UnityEngine;
 namespace Dex.Tweaker
 {
     [BepInPlugin("com.Dex.Tweaker", "Dex.Tweaker", "1.6.0")]
+    [BepInDependency(Util.MTFOInfo.GUID, BepInDependency.DependencyFlags.HardDependency)]
     [BepInProcess("GTFO.exe")]
     class BasePlugin : BepInEx.IL2CPP.BasePlugin
     {
