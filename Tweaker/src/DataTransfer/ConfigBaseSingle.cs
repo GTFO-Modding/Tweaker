@@ -2,7 +2,6 @@
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using MTFO.Managers;
 using Dex.Tweaker.Util;
 
 namespace Dex.Tweaker.DataTransfer
@@ -14,7 +13,7 @@ namespace Dex.Tweaker.DataTransfer
         public virtual string GetFileName { get => $"{typeof(T).Name}.json"; }
         public ConfigBaseSingle()
         {
-            var jsonPath = Path.Combine(ConfigManager.CustomPath, "Tweaker", GetFileName);
+            var jsonPath = Path.Combine(DataBlock.CustomPath, "Tweaker", GetFileName);
             if(File.Exists(jsonPath))
             {
                 Config = JsonSerializer.Deserialize<T>(File.ReadAllText(jsonPath));
