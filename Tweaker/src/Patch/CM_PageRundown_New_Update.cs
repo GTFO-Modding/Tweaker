@@ -12,17 +12,6 @@ namespace Dex.Tweaker.Patch
     {
         public static void Postfix(CM_PageRundown_New __instance)
         {
-            //Disable matchmake buttons
-            __instance.m_matchmakeAllButton.SetVisible(false);
-            __instance.m_matchmakeAllButton.SetText("MATCHMAKE DISABLED");
-            __instance.m_matchmakeAllButton.OnBtnPressCallback = null;
-
-            __instance.m_expeditionWindow.m_matchButton.SetVisible(false);
-
-            //Replace discord button
-            __instance.m_discordButton.SetText(Discord.name);
-            __instance.m_discordButton.OnBtnPressCallback = Discord.callback;
-
             if (!ConfigManager.RundownLayout.Config.internalEnabled) return;
 
             //Hide rundown progression
