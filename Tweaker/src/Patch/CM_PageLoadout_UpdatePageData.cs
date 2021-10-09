@@ -12,15 +12,6 @@ namespace Dex.Tweaker.Patch
         public static void Prefix(CM_PageLoadout __instance)
         {
             ObjectiveModifier.Modifier = null;
-            __instance.m_discordButton.OnBtnPressCallback = Discord.callback;
-            __instance.m_discordButton.SetText(Discord.name);
-            var sb = new StringBuilder();
-            sb.AppendLine("Do not play modded content on the official GTFO server or online matchmake lobbies.");
-            sb.AppendLine("\nFeel free to join the unofficial discord server linked below and ask people to play.");
-
-            //TODO utilize this method to lock out player in vanilla instance
-            __instance.m_movingContentHolder.Find("ShareServerId/ShareText").gameObject.GetComponent<TextMeshPro>()
-                .SetText(sb.ToString());
         }
 
         //TODO add config file to allow use of spinning player models
