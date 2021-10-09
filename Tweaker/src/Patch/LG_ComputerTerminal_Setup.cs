@@ -27,7 +27,7 @@ namespace Dex.Tweaker.Patch
                 __instance.transform.rotation.w
             };
             var logOutput = string.Format("[{0,2}] {1,-13} position {2,13}, {3,13}, {4,13} | rotation {5,13}, {6,13}, {7,13}, {8,13}", information);
-            Log.Message(logOutput);
+            Log.Debug(logOutput);
         }
         public static uint CurrentIndex { get; set; }
     }
