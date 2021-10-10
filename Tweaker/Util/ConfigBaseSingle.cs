@@ -12,12 +12,12 @@ namespace Dex.Tweaker.Util
             var jsonPath = Path.Combine(MTFOWrapper.CustomPath, GetFileName);
             if(File.Exists(jsonPath))
             {
-                Config = JsonSerializer.Deserialize<T>(File.ReadAllText(jsonPath));
+                Config = JsonSerializer.Deserialize<T>(File.ReadAllText(jsonPath), new() { AllowTrailingCommas = true, PropertyNameCaseInsensitive = true });
             }
             else
             {
                 Config = new T();
-                File.WriteAllText(jsonPath, JsonSerializer.Serialize(Config, new JsonSerializerOptions() { WriteIndented = true })) ;
+                File.WriteAllText(jsonPath, JsonSerializer.Serialize(Config, new() { WriteIndented = true })) ;
             }
 
             Log.Debug($"Loaded {GetFileName}");
