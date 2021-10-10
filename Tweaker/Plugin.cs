@@ -12,12 +12,6 @@ namespace Dex.Tweaker
     {
         public override void Load()
         {
-            if (Globals.Global.RundownIdToLoad > 1)
-            {
-                base.Log.LogWarning("Edit the data blocks to load rundown id 1 for tweaker to work");
-                base.Unload();
-                return;
-            }
             Util.Log.Source = base.Log;
             CoreManager.Current = new(base.Config);
             CoreManager.Current.LoadJson();
