@@ -46,4 +46,8 @@
   <ItemGroup>
     <Reference Include="$(GameFolder)/BepInEx/plugins/dakkhuza-MTFO/*.dll" Private="false" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
 </Project>
