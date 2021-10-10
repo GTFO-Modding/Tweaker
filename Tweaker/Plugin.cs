@@ -14,9 +14,9 @@ namespace Dex.Tweaker
         {
             Util.Log.Source = base.Log;
             CoreManager.Current = new(base.Config);
-            CoreManager.Current.LoadJson();
             Harmony.Current = new("com.Dex.Tweaker");
             Harmony.Current.Patch(CoreManager.Current);
+            CoreManager.Current.LoadJson();
         }
     }
 }
