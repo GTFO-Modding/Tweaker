@@ -1,18 +1,16 @@
-﻿using System;
-using Dex.Tweaker.Core;
+﻿using Dex.Tweaker.Core;
 using HarmonyLib;
 using Player;
 using UnityEngine;
 
-namespace Dex.Tweaker.Patch
+namespace Dex.Tweaker.Patch;
+
+[HarmonyPatch(typeof(PlayerLocomotion), nameof(PlayerLocomotion.AddExternalPushForce))]
+class PlayerLocomotion_AddExternalPushForce
 {
-    [HarmonyPatch(typeof(PlayerLocomotion), "AddExternalPushForce")]
-    class PlayerLocomotion_AddExternalPushForce
+    public static void Prefix(ref Vector3 force)
     {
-        public static void Prefix(ref Vector3 force)
-        {
-            if (ConfigManager.PlayerModifier.Config.internalEnabled && ConfigManager.PlayerModifier.Config.SlideForceScale != 1f)
-                force = force * ConfigManager.PlayerModifier.Config.SlideForceScale;
-        }
+        if (ConfigManager.PlayerModifier.Config.internalEnabled && ConfigManager.PlayerModifier.Config.SlideForceScale != 1f)
+            force = force * ConfigManager.PlayerModifier.Config.SlideForceScale;
     }
 }

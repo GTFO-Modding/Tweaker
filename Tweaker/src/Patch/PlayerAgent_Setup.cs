@@ -1,18 +1,16 @@
-﻿using System;
-using Dex.Tweaker.Core;
+﻿using Dex.Tweaker.Core;
 using HarmonyLib;
 using Player;
 using UnityEngine;
 
-namespace Dex.Tweaker.Patch
+namespace Dex.Tweaker.Patch;
+
+[HarmonyPatch(typeof(PlayerAgent), nameof(PlayerAgent.Setup))]
+class PlayerAgent_Setup
 {
-    [HarmonyPatch(typeof(PlayerAgent), "Setup")]
-    class PlayerAgent_Setup
+    public static void Postfix(PlayerAgent __instance)
     {
-        public static void Postfix(PlayerAgent __instance)
-        {
-            if (ConfigManager.PlayerModifier.Config.internalEnabled && ConfigManager.PlayerModifier.Config.ModelScale != 1f)
-                __instance.PlayerSyncModel.transform.localScale = Vector3.one * ConfigManager.PlayerModifier.Config.ModelScale;
-        }
+        if (ConfigManager.PlayerModifier.Config.internalEnabled && ConfigManager.PlayerModifier.Config.ModelScale != 1f)
+            __instance.PlayerSyncModel.transform.localScale = Vector3.one * ConfigManager.PlayerModifier.Config.ModelScale;
     }
 }

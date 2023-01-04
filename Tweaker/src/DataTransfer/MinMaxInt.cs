@@ -1,15 +1,12 @@
-﻿using System;
+﻿namespace Dex.Tweaker.DataTransfer;
 
-namespace Dex.Tweaker.DataTransfer
+class MinMaxInt
 {
-    class MinMaxInt
+    public MinMaxInt(int min, int max)
     {
-        public MinMaxInt(int min, int max)
-        {
-            Min = min;
-            Max = max;
-        }
-        public int Min { get; set; }
-        public int Max { get; set; }
+        Min = min;
+        Max = max;
     }
+    public int Min { get; set; }
+    public int Max { get; set; }
 }

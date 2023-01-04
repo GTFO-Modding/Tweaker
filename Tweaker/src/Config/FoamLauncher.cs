@@ -1,19 +1,17 @@
-﻿using System;
-using Dex.Tweaker.Patch;
+﻿using Dex.Tweaker.Patch;
 
-namespace Dex.Tweaker.Config
+namespace Dex.Tweaker.Config;
+
+class FoamLauncher : DataTransfer.ConfigBaseMultiple<DataTransfer.FoamLauncher>
 {
-    class FoamLauncher : DataTransfer.ConfigBaseMultiple<DataTransfer.FoamLauncher>
+    public override void OnConfigLoaded()
     {
-        public override void OnConfigLoaded()
+        foreach (var config in Config)
         {
-            foreach (var config in this.Config)
+            if (config.internalEnabled)
             {
-                if (config.internalEnabled)
-                {
-                    BasePlugin.Instance.PatchAll(typeof(GlueGun_Setup));
-                    break;
-                }
+                Plugin.Harmony.PatchAll(typeof(GlueGun_Setup));
+                break;
             }
         }
     }

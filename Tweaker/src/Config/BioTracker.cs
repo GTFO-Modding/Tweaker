@@ -1,19 +1,17 @@
-﻿using System;
-using Dex.Tweaker.Patch;
+﻿using Dex.Tweaker.Patch;
 
-namespace Dex.Tweaker.Config
+namespace Dex.Tweaker.Config;
+
+class BioTracker : DataTransfer.ConfigBaseMultiple<DataTransfer.BioTracker>
 {
-    class BioTracker : DataTransfer.ConfigBaseMultiple<DataTransfer.BioTracker>
+    public override void OnConfigLoaded()
     {
-        public override void OnConfigLoaded()
+        foreach (var config in Config)
         {
-            foreach (var config in this.Config)
+            if (config.internalEnabled)
             {
-                if (config.internalEnabled)
-                {
-                    BasePlugin.Instance.PatchAll(typeof(EnemyScanner_Setup));
-                    break;
-                }
+                Plugin.Harmony.PatchAll(typeof(EnemyScanner_Setup));
+                break;
             }
         }
     }

@@ -1,17 +1,15 @@
-﻿using System;
-using Dex.Tweaker.Patch;
+﻿using Dex.Tweaker.Patch;
 
-namespace Dex.Tweaker.Config
+namespace Dex.Tweaker.Config;
+
+class PageExpeditionResult : DataTransfer.ConfigBaseSingle<DataTransfer.PageExpeditionResult>
 {
-    class PageExpeditionResult : DataTransfer.ConfigBaseSingle<DataTransfer.PageExpeditionResult>
+    public override void OnConfigLoaded()
     {
-        public override void OnConfigLoaded()
+        if (Config.internalEnabled)
         {
-            if (this.Config.internalEnabled)
-            {
-                BasePlugin.Instance.PatchAll(typeof(CM_PageExpeditionFail_Setup));
-                BasePlugin.Instance.PatchAll(typeof(CM_PageExpeditionSuccess_Setup));
-            }
+            Plugin.Harmony.PatchAll(typeof(CM_PageExpeditionFail_Setup));
+            Plugin.Harmony.PatchAll(typeof(CM_PageExpeditionSuccess_Setup));
         }
     }
 }

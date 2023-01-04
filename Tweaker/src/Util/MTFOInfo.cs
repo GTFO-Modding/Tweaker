@@ -1,11 +1,10 @@
 ﻿using System;
 using MTFO.Managers;
 
-namespace Dex.Tweaker.Util
+namespace Dex.Tweaker.Util;
+
+class MTFOInfo
 {
-    class MTFOInfo
-    {
-        public static string CustomPath => ConfigManager.CustomPath;
-        public const string GUID = MTFO.MTFO.GUID;
-    }
+    public static string CustomPath => ConfigManager.CustomPath;
+    public const string GUID = MTFO.MTFO.GUID;
 }

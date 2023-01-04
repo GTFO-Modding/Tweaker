@@ -1,18 +1,15 @@
-﻿using System;
+﻿namespace Dex.Tweaker.DataTransfer;
 
-namespace Dex.Tweaker.DataTransfer
+class Vector3
 {
-    class Vector3
+    public Vector3() { }
+    public Vector3(float x, float y, float z)
     {
-        public Vector3() { }
-        public Vector3(float x, float y, float z)
-        {
-            X = x;
-            Y = y;
-            Z = z;
-        }
-        public float X { get; set; }
-        public float Y { get; set; }
-        public float Z { get; set; }
+        X = x;
+        Y = y;
+        Z = z;
     }
+    public float X { get; set; }
+    public float Y { get; set; }
+    public float Z { get; set; }
 }

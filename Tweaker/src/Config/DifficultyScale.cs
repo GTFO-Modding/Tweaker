@@ -1,20 +1,18 @@
-﻿using System;
-using Dex.Tweaker.Patch;
+﻿using Dex.Tweaker.Patch;
 
-namespace Dex.Tweaker.Config
+namespace Dex.Tweaker.Config;
+
+class DifficultyScale : DataTransfer.ConfigBaseSingle<DataTransfer.DifficultyScale>
 {
-    class DifficultyScale : DataTransfer.ConfigBaseSingle<DataTransfer.DifficultyScale>
+    public override void OnConfigLoaded()
     {
-        public override void OnConfigLoaded()
+        if (Config.internalEnabled)
         {
-            if (this.Config.internalEnabled)
-            {
-                BasePlugin.Instance.PatchAll(typeof(BulletWeapon_BulletHit));
-                BasePlugin.Instance.PatchAll(typeof(CP_Bioscan_Core_Master_OnPlayerScanChangedCheckProgress));
-                BasePlugin.Instance.PatchAll(typeof(Dam_PlayerDamageBase_OnIncomingDamage));
-                BasePlugin.Instance.PatchAll(typeof(EnemyCostManager_AddCost));
-                BasePlugin.Instance.PatchAll(typeof(MeleeWeaponFirstPerson_DoAttackDamage));
-            }
+            Plugin.Harmony.PatchAll(typeof(BulletWeapon_BulletHit));
+            Plugin.Harmony.PatchAll(typeof(CP_Bioscan_Core_Master_OnPlayerScanChangedCheckProgress));
+            Plugin.Harmony.PatchAll(typeof(Dam_PlayerDamageBase_OnIncomingDamage));
+            Plugin.Harmony.PatchAll(typeof(EnemyCostManager_AddCost));
+            Plugin.Harmony.PatchAll(typeof(MeleeWeaponFirstPerson_DoAttackDamage));
         }
     }
 }

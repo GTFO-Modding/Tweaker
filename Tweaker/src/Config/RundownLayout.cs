@@ -1,16 +1,15 @@
-﻿using System;
-using Dex.Tweaker.Patch;
+﻿using Dex.Tweaker.Patch;
 
-namespace Dex.Tweaker.Config
+namespace Dex.Tweaker.Config;
+
+class RundownLayout : DataTransfer.ConfigBaseSingle<DataTransfer.RundownLayout>
 {
-    class RundownLayout : DataTransfer.ConfigBaseSingle<DataTransfer.RundownLayout>
+    public override void OnConfigLoaded()
     {
-        public override void OnConfigLoaded()
+        if (Config.internalEnabled)
         {
-            if (this.Config.internalEnabled)
-            {
-                BasePlugin.Instance.PatchAll(typeof(CM_PageRundown_New_UpdateExpeditionIconProgression));
-            }
+            Plugin.Harmony.PatchAll(typeof(CM_PageRundown_New_UpdateExpeditionIconProgression));
+            Plugin.Harmony.PatchAll(typeof(CM_PageRundown_New_Update));
         }
     }
 }

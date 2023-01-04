@@ -1,18 +1,16 @@
-﻿using System;
+﻿using CellMenu;
 using Dex.Tweaker.Core;
 using HarmonyLib;
-using CellMenu;
 
-namespace Dex.Tweaker.Patch
+namespace Dex.Tweaker.Patch;
+
+[HarmonyPatch(typeof(CM_PageExpeditionFail), nameof(CM_PageExpeditionFail.Setup))]
+class CM_PageExpeditionFail_Setup
 {
-    [HarmonyPatch(typeof(CM_PageExpeditionFail), "Setup")]
-    class CM_PageExpeditionFail_Setup
+    public static void Postfix(CM_PageExpeditionFail __instance)
     {
-        public static void Postfix(CM_PageExpeditionFail __instance)
-        {
-            if (ConfigManager.PageExpeditionResult.Config.internalEnabled)
-                if (ConfigManager.PageExpeditionResult.Config.Fail != null)
-                    __instance.m_missionFailed_text.text = ConfigManager.PageExpeditionResult.Config.Fail;
-        }
+        if (ConfigManager.PageExpeditionResult.Config.internalEnabled)
+            if (ConfigManager.PageExpeditionResult.Config.Fail != null)
+                __instance.m_missionFailed_text.text = ConfigManager.PageExpeditionResult.Config.Fail;
     }
 }

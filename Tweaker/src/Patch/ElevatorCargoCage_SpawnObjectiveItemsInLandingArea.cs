@@ -1,48 +1,50 @@
 ﻿using Dex.Tweaker.Core;
 using HarmonyLib;
-using UnityEngine;
 using LevelGeneration;
+using UnityEngine;
 
-namespace Dex.Tweaker.Patch
+namespace Dex.Tweaker.Patch;
+
+using Random = UnityEngine.Random;
+
+[HarmonyPatch(typeof(ElevatorCargoCage), nameof(ElevatorCargoCage.SpawnObjectiveItemsInLandingArea))]
+class ElevatorCargoCage_SpawnObjectiveItemsInLandingArea
 {
-    [HarmonyPatch(typeof(ElevatorCargoCage), "SpawnObjectiveItemsInLandingArea")]
-    class ElevatorCargoCage_SpawnObjectiveItemsInLandingArea
+    public static bool Prefix()
     {
-        public static bool Prefix()
+        AddedCargo = null;
+        foreach(var cargo in ConfigManager.ElevatorCargo.Config)
         {
-            Cargo = null;
-            foreach(var cargo in ConfigManager.ElevatorCargo.Config)
+            if (!cargo.internalEnabled) continue;
+            if (cargo.DataBlockId != RundownManager.ActiveExpedition.MainLayerData.ObjectiveData.DataBlockId) continue;
+            if (cargo.ForceDisable)
             {
-                if (!cargo.internalEnabled) continue;
-                if (cargo.DataBlockId != RundownManager.ActiveExpedition.MainLayerData.ObjectiveData.DataBlockId) continue;
-                if (cargo.ForceDisable)
-                {
-                    ElevatorRide.Current.m_cargoCageInUse = false;
-                    return false;
-                }
-                Cargo = cargo;
-                break;
+                ElevatorRide.Current.m_cargoCageInUse = false;
+                return false;
             }
-            return true;
+            AddedCargo = cargo;
+            break;
         }
-
-        public static void Postfix(ElevatorCargoCage __instance)
-        {
-            if (Cargo == null) return;
-            if (Cargo.ItemID.Length < 1) return;
-            __instance.m_itemsToMoveToCargo = new Transform[Cargo.ItemID.Length];
-            var index = 0;
-            foreach(var item in Cargo.ItemID)
-            {
-                var lgPickupCustom = LG_PickupItem.SpawnGenericPickupItem(ElevatorShaftLanding.CargoAlign);
-                lgPickupCustom.SpawnNode = Builder.GetElevatorArea().m_courseNode;
-                lgPickupCustom.SetupAsBigPickupItem(Random.Range(0, int.MaxValue), item, false);
-                __instance.m_itemsToMoveToCargo[index] = lgPickupCustom.transform;
-                index++;
-            }
-            ElevatorRide.Current.m_cargoCageInUse = true;
-        }
-
-        public static DataTransfer.ElevatorCargo Cargo { get; set; }
+        return true;
     }
+
+    public static void Postfix(ElevatorCargoCage __instance)
+    {
+        if (AddedCargo == null) return;
+        if (AddedCargo.CargoItems.Length < 1) return;
+
+        if (__instance.m_itemsToMoveToCargo == null)
+            __instance.m_itemsToMoveToCargo = new();
+        
+        foreach(var cargo in AddedCargo.CargoItems)
+        {
+            var lgPickupCustom = LG_PickupItem.SpawnGenericPickupItem(ElevatorShaftLanding.CargoAlign);
+            lgPickupCustom.SpawnNode = Builder.GetElevatorArea().m_courseNode;
+            lgPickupCustom.SetupAsBigPickupItem(Random.Range(0, int.MaxValue), cargo.ItemId, false, cargo.ObjectiveChainIndex);
+            __instance.m_itemsToMoveToCargo.Add(lgPickupCustom.transform);
+        }
+        ElevatorRide.Current.m_cargoCageInUse = true;
+    }
+
+    public static DataTransfer.ElevatorCargo AddedCargo { get; set; }
 }

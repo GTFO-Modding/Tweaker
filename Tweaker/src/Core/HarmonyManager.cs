@@ -1,10 +1,8 @@
-﻿using System;
-using HarmonyLib;
+﻿using HarmonyLib;
 
-namespace Dex.Tweaker.Core
+namespace Dex.Tweaker.Core;
+
+class HarmonyManager
 {
-    class HarmonyManager
-    {
-        public Harmony Instance { get; set; }
-    }
+    public Harmony Instance { get; set; }
 }

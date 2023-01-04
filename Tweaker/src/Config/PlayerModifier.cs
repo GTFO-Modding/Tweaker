@@ -1,23 +1,21 @@
-﻿using System;
-using Dex.Tweaker.Patch;
+﻿using Dex.Tweaker.Patch;
 
-namespace Dex.Tweaker.Config
+namespace Dex.Tweaker.Config;
+
+class PlayerModifier : DataTransfer.ConfigBaseSingle<DataTransfer.PlayerModifier>
 {
-    class PlayerModifier : DataTransfer.ConfigBaseSingle<DataTransfer.PlayerModifier>
+    public override void OnConfigLoaded()
     {
-        public override void OnConfigLoaded()
+        if (Config.internalEnabled)
         {
-            if (this.Config.internalEnabled)
-            {
-                if (!this.Config.CanStealthBhop)
-                    BasePlugin.Instance.PatchAll(typeof(EnemyDetection_DetectOnNoiseDistance_Conditional_AnimatedWindow));
-                if (this.Config.ModelScale != 1f)
-                    BasePlugin.Instance.PatchAll(typeof(PlayerAgent_Setup));
-                if (this.Config.SlideForceScale != 1f)
-                    BasePlugin.Instance.PatchAll(typeof(PlayerLocomotion_AddExternalPushForce));
-                if (this.Config.EvadeSpeed != 3f)
-                    BasePlugin.Instance.PatchAll(typeof(PLOC_Stand_Update));
-            }
+            if (!Config.CanStealthBhop)
+                Plugin.Harmony.PatchAll(typeof(EnemyDetection_DetectOnNoiseDistance_Conditional_AnimatedWindow));
+            if (Config.ModelScale != 1f)
+                Plugin.Harmony.PatchAll(typeof(PlayerAgent_Setup));
+            if (Config.SlideForceScale != 1f)
+                Plugin.Harmony.PatchAll(typeof(PlayerLocomotion_AddExternalPushForce));
+            if (Config.EvadeSpeed != 3f)
+                Plugin.Harmony.PatchAll(typeof(PLOC_Stand_Update));
         }
     }
 }

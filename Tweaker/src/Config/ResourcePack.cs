@@ -1,19 +1,18 @@
-﻿using System;
-using Dex.Tweaker.Patch;
+﻿using Dex.Tweaker.Patch;
 
-namespace Dex.Tweaker.Config
+namespace Dex.Tweaker.Config;
+
+class ResourcePack : DataTransfer.ConfigBaseMultiple<DataTransfer.ResourcePack>
 {
-    class ResourcePack : DataTransfer.ConfigBaseMultiple<DataTransfer.ResourcePack>
+    public override void OnConfigLoaded()
     {
-        public override void OnConfigLoaded()
+        foreach (var config in Config)
         {
-            foreach (var config in this.Config)
+            if (config.internalEnabled)
             {
-                if (config.internalEnabled)
-                {
-                    BasePlugin.Instance.PatchAll(typeof(PlayerBackpackManager_PickupHealthRel));
-                    BasePlugin.Instance.PatchAll(typeof(PlayerBackpackManager_ReceiveAmmoGive));
-                }
+                Plugin.Harmony.PatchAll(typeof(PlayerBackpackManager_PickupHealthRel));
+                Plugin.Harmony.PatchAll(typeof(PlayerBackpackManager_ReceiveAmmoGive));
+                break;
             }
         }
     }

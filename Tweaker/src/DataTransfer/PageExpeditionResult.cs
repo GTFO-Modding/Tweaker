@@ -1,11 +1,7 @@
-﻿using System;
+﻿namespace Dex.Tweaker.DataTransfer;
 
-namespace Dex.Tweaker.DataTransfer
+class PageExpeditionResult : JsonConfig
 {
-    class PageExpeditionResult
-    {
-        public string Fail { get; set; } = "EXPEDITION FAILED";
-        public string Success { get; set; } = "EXPEDITION SUCCESS";
-        public bool internalEnabled { get; set; } = false;
-    }
+    public string Fail { get; set; } = "EXPEDITION FAILED";
+    public string Success { get; set; } = "EXPEDITION SUCCESS";
 }
